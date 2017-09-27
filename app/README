@@ -1,0 +1,5 @@
+Mvp改进版
+
+1.model不再单纯的是javabean了，需要承担起多数据源结构的Repository的功能，需要定义model接口；
+2.鉴于presenter的接口实现的不便以及多余，presenter不再使用接口；
+3.或将使用loader养成presenter的生命周期；

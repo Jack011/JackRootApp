@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jack.rootapp">
+
+
+    <!--网络功能-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--存储-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--添加可以向外拨打电话的权限  -->
+    <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
+    <!--拍照-->
+    <!--<uses-permission android:name="android.permission.CAMERA" />-->
+    <!--sharesdk 添加必要的权限 -->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />-->
+    <!-- 蓝牙分享所需的权限,不需要用到的话可以省略 -->
+    <!--<uses-permission android:name="android.permission.BLUETOOTH" />-->
+    <!--<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />-->
+
+    <!-- protection level is dangerous, need request runtime permission -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+
+    <!-- 添加必要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+
+    <application
+        android:name=".base.ThisApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".mvp.view.RegisterActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--<activity-->
+            <!--android:name=".MainActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="stateHidden|adjustPan"/>-->
+
+
+
+
+<!--—————————————————————————————————————————————————第三方——————————————————————————————————————————-->
+        <!--定位-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="3a989083b1881a165cb46f3c8031e57b"/>
+
+
+
+        <!--Image Selector Entry-->
+        <activity
+            android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"
+            android:theme="@style/ImagePickerThemeFullScreen" />
+
+
+        <!--sharesdk-->
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <intent-filter>
+                <!--&lt;!&ndash; ※这里需要将1105785901改成你在腾讯申请后得到的AppId&ndash;&gt;-->
+                <data android:scheme="tencent1106262215" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+
+        <!--<receiver-->
+            <!--android:name=".third.MyReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="false">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="cn.jpush.android.intent.REGISTRATION" /> &lt;!&ndash;Required  用户注册SDK的intent&ndash;&gt;-->
+                <!--<action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> &lt;!&ndash;Required  用户接收SDK消息的intent&ndash;&gt;-->
+                <!--<action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> &lt;!&ndash;Required  用户接收SDK通知栏信息的intent&ndash;&gt;-->
+                <!--<action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> &lt;!&ndash;Required  用户打开自定义通知栏的intent&ndash;&gt;-->
+                <!--<action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> &lt;!&ndash;Optional 用户接受Rich Push Javascript 回调函数的intent&ndash;&gt;-->
+                <!--<action android:name="cn.jpush.android.intent.CONNECTION" />&lt;!&ndash; 接收网络变化 连接/断开 since 1.6.3 &ndash;&gt;-->
+                <!--<category android:name="com.zjfxwc.kexisky" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <!--&lt;!&ndash; 填写您从Mob开发者后台中得到的Appkey和AppSecret &ndash;&gt;-->
+        <meta-data android:name="Mob-AppKey" android:value="2027606633fca"/>
+        <meta-data android:name="Mob-AppSecret" android:value="450749a0fdf7ba4cfd78e141baaa0416"/>
+        <!--地图-->
+
+        <!--定位-->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <!--友盟统计-->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="59896378ae1bf864aa001313" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+    </application>
+
+</manifest>
